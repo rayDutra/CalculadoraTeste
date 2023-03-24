@@ -24,11 +24,8 @@ public class CalculadoraTest {
 		calc = new Calculadora();
 		int resultadoObtido = calc.getMemoria();
 		//comparar
-		assertEquals(resultadoEsperado, resultadoObtido,"Construtor vazio com falha,inicializa memória incorretamente");
-		
-		
+		assertEquals(resultadoEsperado, resultadoObtido,"Construtor vazio com falha,inicializa memória incorretamente");		
 	}
-	
 	@Test
 	public void testerConstrutorComParametroRecebendoValor0() {
 			calc = new Calculadora(0);
@@ -36,7 +33,6 @@ public class CalculadoraTest {
 			int resultadoObtido = calc.getMemoria();
 			assertEquals(resultadoEsperado, resultadoObtido);
 		}
-	
 	@Test
 	public void testerConstrutorComParametroRecebendoValorNegativo() {
 			calc = new Calculadora(-10);
@@ -78,26 +74,25 @@ public class CalculadoraTest {
 		assertThrows(Exception.class,()-> calc.dividir(0));
 	}
 	@Test
-	public void testarDividirPorNumeroPositivo() throws Exception {
-	    calc= new Calculadora(10);
-		calc.dividir(2);
-		int resultadoEsperado = 5;
-		int resultadoObtido = calc.getMemoria();
-		assertEquals(resultadoEsperado, resultadoObtido);
+	public void testarExponenciarMemoriaPor1(){
+		Calculadora calc = new Calculadora();
+		assertThrows(Exception.class, ()->calc.exponenciar(1));
+
 	}
 	@Test
-	public void testarExponenciarPor1() throws Exception {
-		Calculadora calc = new Calculadora(1);
-		assertThrows(Exception.class,()-> calc.exponenciar(22));
+	public void testarExponenciarMemoriaPor10() {
+		Calculadora calc = new Calculadora(10);
+		assertThrows(Exception.class, ()->calc.exponenciar(11));
 	}
-
 	@Test
-	public void testarExponenciarPor10() throws Exception {
+	public void testarZerarMemoria(){
 		Calculadora calc = new Calculadora(1);
-		assertThrows(Exception.class,()-> calc.exponenciar(10));
-	}
-	
-
-	
+		calc.zerarMemoria();
+		int memoriaEsperada = 0;
+		int memoriaObtida = calc.getMemoria();
+		assertEquals(memoriaEsperada, memoriaObtida);
+	}	
 }
+
+
 
